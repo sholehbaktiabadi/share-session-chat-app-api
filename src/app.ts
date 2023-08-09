@@ -5,9 +5,11 @@ import { koaBody } from 'koa-body'
 import { Variables } from './config/variable.config';
 import { connectMysql } from './config/mysql.config';
 import userRouter from './module/user/user.controller';
+import { connectionWebsocket } from './config/socket.io';
 
 
 connectMysql()
+connectionWebsocket()
 const app = new Koa()
 const router = new Router({ prefix: '/test' })
 router.post('/', (ctx: Context) => {
