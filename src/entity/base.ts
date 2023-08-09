@@ -1,9 +1,9 @@
-import { Column } from "typeorm";
+import { CreateDateColumn, UpdateDateColumn } from "typeorm";
 
 export abstract class Base{
-    @Column({ type: 'timestamp' })
+    @CreateDateColumn()
     createdAt!: Date;
 
-    @Column({ type: 'timestamp' })
+    @UpdateDateColumn()
     updatedAt!: Date;
 }
