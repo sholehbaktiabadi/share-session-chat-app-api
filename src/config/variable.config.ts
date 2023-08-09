@@ -1,15 +1,15 @@
-import { configDotenv } from 'dotenv'
+import { configDotenv } from "dotenv"
 configDotenv()
 
-type VariableType= {
-    APP_PORT: number;
-    APP_ENV: string;
-    MYSQL_HOST: string;
-    MYSQL_PORT: number;
-    MYSQL_USER: string;
-    MYSQL_DATABASE: string;
-    MYSQL_PASSWORD: string;
-    SOCKETIO_PORT: string;
+type VariableType = {
+    APP_PORT: number
+    APP_ENV: string
+    MYSQL_HOST: string
+    MYSQL_PORT: number
+    MYSQL_USER: string
+    MYSQL_DATABASE: string
+    MYSQL_PASSWORD: string
+    SOCKETIO_PORT: string
 }
 
 export const Variables: VariableType = {
@@ -20,5 +20,5 @@ export const Variables: VariableType = {
     MYSQL_USER: process.env.MYSQL_USER!,
     MYSQL_DATABASE: process.env.MYSQL_DATABASE!,
     MYSQL_PASSWORD: process.env.MYSQL_PASSWORD!,
-    SOCKETIO_PORT: process.env.SOCKETIO_PORT!
-} 
+    SOCKETIO_PORT: process.env.SOCKETIO_PORT!,
+}
