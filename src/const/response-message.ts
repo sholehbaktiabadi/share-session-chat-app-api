@@ -1,6 +1,6 @@
-const InternalServerErr: string = "Internal server error"
+const InternalServerErr: string = "Internal server error";
 const notFound = (topic?: string): string =>
-    `${topic ? topic + " " : ""}not found`
+    `${topic ? topic + " " : ""}not found`;
 
 export const errMsg = (msg?: string) => ({
     // Internal Server Error
@@ -9,4 +9,4 @@ export const errMsg = (msg?: string) => ({
     nf: notFound(msg),
     // Custom Message
     custom: msg!,
-})
+});

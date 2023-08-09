@@ -1,20 +1,20 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
-import { Base } from "./base"
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Base } from "./base";
 
 @Entity("user")
 export class User extends Base {
     @PrimaryGeneratedColumn("uuid")
-    id!: string
+    id!: string;
 
     @Column({ type: "varchar", length: 120 })
-    name!: string
+    name!: string;
 
     @Column({ type: "varchar", length: 25 })
-    username!: string
+    username!: string;
 
     @Column({ type: "varchar", length: 120 })
-    email!: string
+    email!: string;
 
     @Column({ type: "varchar", length: 120 })
-    phone!: string
+    phone!: string;
 }
