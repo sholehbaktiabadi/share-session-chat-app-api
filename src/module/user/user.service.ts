@@ -42,7 +42,7 @@ export class UserService {
             const data = await this.userRepository.update(id, dto)
             return success(ctx, data)
         } catch (err) {
-            return error
+            return error(ctx, errMsg().ise, 500)
         }
     }
 
@@ -53,7 +53,7 @@ export class UserService {
             const data = await this.userRepository.delete(id)
             return success(ctx, data)
         } catch (err) {
-            return error
+            return error(ctx, errMsg().ise, 500)
         }
     }
 }
