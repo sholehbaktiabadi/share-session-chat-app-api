@@ -1,4 +1,4 @@
-import { DataSource, Repository } from "typeorm";
+import { DataSource, DeleteResult, Repository, UpdateResult } from "typeorm";
 import { User } from "../../entity/user.entity";
 import { UserDto } from "./user.dto";
 
@@ -8,7 +8,7 @@ export class UserRepository{
         this.userRepository = db.getRepository(User)
     }
 
-    async create(dto: UserDto){
+    async create(dto: UserDto):Promise<User>{
         try {
             return await this.userRepository.save(dto)
         } catch (error) {
@@ -16,7 +16,7 @@ export class UserRepository{
         }
     }
 
-    async getAll(){
+    async getAll():Promise<User[]>{
         try {
             return await this.userRepository.find()
         } catch (error) {
@@ -24,7 +24,7 @@ export class UserRepository{
         }
     }
     
-    async getOne(id: string){
+    async getOne(id: string):Promise<User>{
         try {
             return await this.userRepository.findOneBy({ id })
         } catch (error) {
@@ -32,7 +32,15 @@ export class UserRepository{
         }
     }
 
-    async isExist(id: string){
+    async getOneByEmail(email: string):Promise<User>{
+        try {
+            return await this.userRepository.findOne({ where: { email } })
+        } catch (error) {
+            return error
+        }
+    }
+
+    async isExist(id: string):Promise<boolean>{
         try {
             return await this.userRepository.exist({ where: { id } })
         } catch (error) {
@@ -40,7 +48,7 @@ export class UserRepository{
         }
     }
 
-    async update(id: string, dto: UserDto){
+    async update(id: string, dto: UserDto):Promise<UpdateResult>{
         try {
             return await this.userRepository.update(id, dto)
         } catch (error) {
@@ -48,7 +56,7 @@ export class UserRepository{
         }
     }
 
-    async delete(id: string){
+    async delete(id: string):Promise<DeleteResult>{
         try {
             return await this.userRepository.delete({ id })
         } catch (error) {
