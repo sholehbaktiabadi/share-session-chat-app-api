@@ -49,7 +49,7 @@ export class UserService {
     async delete(ctx: Context, id: string){
         try {
             const isExist = await this.userRepository.isExist(id)
-            if(!isExist) return error(ctx, errMsg('ngga ketemu').custom, 400)
+            if(!isExist) return error(ctx, errMsg('user').nf, 400)
             const data = await this.userRepository.delete(id)
             return success(ctx, data)
         } catch (err) {
