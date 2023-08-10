@@ -26,6 +26,7 @@
     "jsonwebtoken": "^9.0.1",
     "koa": "^2.14.2",
     "koa-body": "^6.0.1",
+    "koa-jwt": "^4.0.4",
     "mongodb": "^5.7.0",
     "mysql2": "^3.6.0",
     "signale": "^1.4.0",

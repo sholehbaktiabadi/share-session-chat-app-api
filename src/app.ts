@@ -8,7 +8,7 @@ import { connectionWebsocket } from './config/socket.io';
 import { connectMongod } from './config/mongo.config';
 import messageRouter from './module/message/message.controller';
 import authRouter from './module/auth/auth.controller';
-
+import { middleware, unauthorizeHandler } from './middleware/middleware';
 
 connectMysql()
 connectMongod()
@@ -16,6 +16,8 @@ connectionWebsocket()
 
 const app = new Koa()
 app.use(koaBody())
+app.use(unauthorizeHandler)
+app.use(middleware)
 app.use(messageRouter.routes())
 app.use(userRouter.routes())
 app.use(authRouter.routes())

@@ -26,4 +26,5 @@ userRouter.delete('/:id', (ctx) => {
     return userService.delete(ctx, id)
 })
 
+
 export default userRouter;

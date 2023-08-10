@@ -1,4 +1,5 @@
 const InternalServerErr: string = "Internal server error";
+const Unauthorized: string = "Unauthorized";
 const notFound = (topic?: string): string =>
     `${topic ? topic + " " : ""}not found`;
 
@@ -9,4 +10,6 @@ export const errMsg = (msg?: string) => ({
     nf: notFound(msg),
     // Custom Message
     custom: msg!,
+    // Unauthorized
+    ua: Unauthorized
 });
