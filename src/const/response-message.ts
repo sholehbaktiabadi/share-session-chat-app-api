@@ -11,5 +11,5 @@ export const errMsg = (msg?: string) => ({
     // Custom Message
     custom: msg!,
     // Unauthorized
-    ua: Unauthorized
+    ua: Unauthorized,
 });

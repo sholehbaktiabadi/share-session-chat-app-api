@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
     password: Variables.MYSQL_PASSWORD,
     database: Variables.MYSQL_DATABASE,
     synchronize: false,
-    logging: ['error'],
+    logging: ["error"],
     entities: [User],
     subscribers: [],
     migrations: [],

@@ -32,5 +32,5 @@ export const Variables: VariableType = {
     MONGO_DATABASE: process.env.MONGO_DATABASE!,
     MONGO_PASSWORD: process.env.MONGO_PASSWORD!,
     SOCKETIO_PORT: process.env.SOCKETIO_PORT!,
-    JWT_SECRET: process.env.JWT_SECRET
+    JWT_SECRET: process.env.JWT_SECRET,
 };
