@@ -20,4 +20,13 @@ export class AuthService{
             return error(ctx, errMsg().ise, 500)
         }
     }
+
+    async register(ctx: Context, dto: UserDto){
+        try {
+            const data = await this.userRepository.create(dto)
+            return success(ctx, data)
+        } catch (err) {
+            return error(ctx, errMsg().ise, 500)
+        }
+    }
 }

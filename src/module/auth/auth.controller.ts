@@ -13,5 +13,9 @@ authRouter.post('/login', async (ctx)=> {
     const dto = ctx.request.body
     return await authService.login(ctx, dto)
 })
+authRouter.post('/register', async (ctx)=> {
+    const dto = ctx.request.body
+    return await authService.register(ctx, dto)
+})
 
 export default authRouter
