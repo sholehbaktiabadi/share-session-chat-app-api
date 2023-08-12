@@ -16,6 +16,8 @@ type VariableType = {
     MONGO_PASSWORD: string;
     SOCKETIO_PORT: string;
     JWT_SECRET: string;
+    REDIS_HOST: string;
+    REDIS_PORT: number;
 };
 
 export const Variables: VariableType = {
@@ -33,4 +35,6 @@ export const Variables: VariableType = {
     MONGO_PASSWORD: process.env.MONGO_PASSWORD!,
     SOCKETIO_PORT: process.env.SOCKETIO_PORT!,
     JWT_SECRET: process.env.JWT_SECRET,
+    REDIS_HOST: process.env.REDIS_HOST,
+    REDIS_PORT: parseInt(process.env.REDIS_PORT)
 };

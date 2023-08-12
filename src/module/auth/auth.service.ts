@@ -5,6 +5,8 @@ import { error, success } from "../../helper/response";
 import { errMsg } from "../../const/response-message";
 import jsonwebtoken from 'jsonwebtoken';
 import { Variables } from "../../config/variable.config";
+import { serverRedis } from "../../config/redis";
+import { userTokenKey } from "../../const/rediskey";
 
 export class AuthService{
     constructor(private userRepository: UserRepository){}
@@ -15,6 +17,7 @@ export class AuthService{
             if(!entity) return error(ctx, errMsg('email').nf, 400)
             if(password !== entity.password) return error(ctx, errMsg('please recheck your credential').custom, 400)
             const token = jsonwebtoken.sign({ id: entity.id, username: entity.username }, Variables.JWT_SECRET, { expiresIn: '1h' })
+            serverRedis.set(userTokenKey(entity.id), token)
             return success(ctx, token)
         } catch (err) {
             return error(ctx, errMsg().ise, 500)
