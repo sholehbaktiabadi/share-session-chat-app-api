@@ -16,7 +16,7 @@ export class AuthService{
             const entity = await this.userRepository.getOneByEmail(email)
             if(!entity) return error(ctx, errMsg('email').nf, 400)
             if(password !== entity.password) return error(ctx, errMsg('please recheck your credential').custom, 400)
-            const token = jsonwebtoken.sign({ id: entity.id, username: entity.username }, Variables.JWT_SECRET, { expiresIn: '1h' })
+            const token = jsonwebtoken.sign({ id: entity.id, username: entity.username }, Variables.JWT_SECRET, { expiresIn: '1d' })
             serverRedis.set(userTokenKey(entity.id), token)
             return success(ctx, token)
         } catch (err) {
