@@ -36,5 +36,5 @@ export const Variables: VariableType = {
     SOCKETIO_PORT: process.env.SOCKETIO_PORT!,
     JWT_SECRET: process.env.JWT_SECRET,
     REDIS_HOST: process.env.REDIS_HOST,
-    REDIS_PORT: parseInt(process.env.REDIS_PORT)
+    REDIS_PORT: parseInt(process.env.REDIS_PORT),
 };

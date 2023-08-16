@@ -2,65 +2,73 @@ import { DataSource, DeleteResult, Repository, UpdateResult } from "typeorm";
 import { User } from "../../entity/user.entity";
 import { UserDto } from "./user.dto";
 
-export class UserRepository{
-    private userRepository: Repository<User>
-    constructor(db: DataSource){
-        this.userRepository = db.getRepository(User)
+export class UserRepository {
+    private userRepository: Repository<User>;
+    constructor(db: DataSource) {
+        this.userRepository = db.getRepository(User);
     }
 
-    async create(dto: UserDto):Promise<User>{
+    async create(dto: UserDto): Promise<User> {
         try {
-            return await this.userRepository.save(dto)
+            return await this.userRepository.save(dto);
         } catch (error) {
-            return error
+            return error;
         }
     }
 
-    async getAll():Promise<User[]>{
+    async getAll(): Promise<User[]> {
         try {
-            return await this.userRepository.find()
+            return await this.userRepository.find();
         } catch (error) {
-            return error
-        }
-    }
-    
-    async getOne(id: string):Promise<User>{
-        try {
-            return await this.userRepository.findOneBy({ id })
-        } catch (error) {
-            return error
+            return error;
         }
     }
 
-    async getOneByEmail(email: string):Promise<User>{
+    async getOne(id: string): Promise<User> {
         try {
-            return await this.userRepository.findOne({ where: { email } })
+            return await this.userRepository.findOneBy({ id });
         } catch (error) {
-            return error
+            return error;
         }
     }
 
-    async isExist(id: string):Promise<boolean>{
+    async getOneByEmail(email: string): Promise<User> {
         try {
-            return await this.userRepository.exist({ where: { id } })
+            return await this.userRepository.findOne({ where: { email } });
         } catch (error) {
-            return error
+            return error;
         }
     }
 
-    async update(id: string, dto: UserDto):Promise<UpdateResult>{
+    async getOneByPhone(phone: string): Promise<User> {
         try {
-            return await this.userRepository.update(id, dto)
+            return await this.userRepository.findOne({ where: { phone } });
         } catch (error) {
-            return error
+            return error;
         }
     }
 
-    async delete(id: string):Promise<DeleteResult>{
+    async isExist(id: string): Promise<boolean> {
         try {
-            return await this.userRepository.delete({ id })
+            return await this.userRepository.exist({ where: { id } });
         } catch (error) {
-            return error
+            return error;
+        }
+    }
+
+    async update(id: string, dto: UserDto): Promise<UpdateResult> {
+        try {
+            return await this.userRepository.update(id, dto);
+        } catch (error) {
+            return error;
+        }
+    }
+
+    async delete(id: string): Promise<DeleteResult> {
+        try {
+            return await this.userRepository.delete({ id });
+        } catch (error) {
+            return error;
         }
     }
 }

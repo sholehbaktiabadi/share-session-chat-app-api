@@ -1,1 +1,1 @@
-export const userTokenKey =(id: string)=> `user:token:${id}`; 
+export const userTokenKey = (id: string) => `user:token:${id}`;

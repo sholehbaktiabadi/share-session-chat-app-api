@@ -1,5 +1,7 @@
 export class MessageDto {
-    msg!: string; 
-    
+    msg!: string;
+
     event!: string;
- }
+
+    phone!: string;
+}
