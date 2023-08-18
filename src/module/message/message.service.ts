@@ -23,9 +23,9 @@ export class MessageService {
             if (!userTarget) return error(ctx, errMsg("user").nf, 400);
             const event = eventMapper(currentUser.id, userTarget.id);
             dto.event = event;
-            const data = await this.messageRepository.create(dto);
+            this.messageRepository.create(dto);
             socketFuntion.emit(event, dto.msg);
-            return success(ctx, data);
+            return success(ctx, event);
         } catch (err) {
             return error(ctx, errMsg().ise, 500);
         }

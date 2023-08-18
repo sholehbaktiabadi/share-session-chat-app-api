@@ -10,7 +10,7 @@ export class MessageRepository {
 
     async create(dto: MessageDto) {
         try {
-            return await this.messageRepository.save(dto);
+            return this.messageRepository.save(dto);
         } catch (error) {
             return error;
         }
