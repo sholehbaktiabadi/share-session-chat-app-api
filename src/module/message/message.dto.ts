@@ -4,4 +4,6 @@ export class MessageDto {
     event!: string;
 
     phone!: string;
+
+    sender!: string;
 }

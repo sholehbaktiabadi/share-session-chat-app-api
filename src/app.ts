@@ -9,6 +9,7 @@ import messageRouter from "./module/message/message.controller";
 import authRouter from "./module/auth/auth.controller";
 import { middleware, unauthorizeHandler } from "./middleware/middleware";
 import { socketFuntion, socketServer } from "./config/socket.io";
+import userEventRouter from "./module/user-event/user-event.controller";
 
 connectMysql();
 connectMongod();
@@ -23,6 +24,7 @@ app.use(koaBody());
 app.use(unauthorizeHandler);
 app.use(middleware);
 app.use(messageRouter.routes());
+app.use(userEventRouter.routes());
 app.use(userRouter.routes());
 app.use(authRouter.routes());
 app.use(async (ctx: Context) => (ctx.body = "Hai there"));

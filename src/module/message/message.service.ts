@@ -16,12 +16,13 @@ export class MessageService {
 
     async create(ctx: Context, dto: MessageDto) {
         try {
-            const currentUser = extractUserToken(ctx);
+            const user = extractUserToken(ctx);
             const userTarget = await this.userRepository.getOneByPhone(
                 dto.phone
             );
             if (!userTarget) return error(ctx, errMsg("user").nf, 400);
-            const event = eventMapper(currentUser.id, userTarget.id);
+            const event = eventMapper(user.id, userTarget.id);
+            dto.sender = user.id
             dto.event = event;
             this.messageRepository.create(dto);
             socketFuntion.emit(event, dto.msg);

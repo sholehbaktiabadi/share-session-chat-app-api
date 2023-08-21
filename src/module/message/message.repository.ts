@@ -1,16 +1,27 @@
-import { DataSource, Repository } from "typeorm";
+import { DataSource, MongoRepository, Repository } from "typeorm";
 import { Message } from "../../entity/message.entity";
 import { MessageDto } from "./message.dto";
+import { User } from "../../entity/user.entity";
+import { JwtPayload } from "jsonwebtoken";
 
 export class MessageRepository {
-    private messageRepository: Repository<Message>;
+    private messageRepository: MongoRepository<Message>;
     constructor(db: DataSource) {
-        this.messageRepository = db.getRepository(Message);
+        this.messageRepository = db.getMongoRepository(Message);
     }
 
     async create(dto: MessageDto) {
         try {
             return this.messageRepository.save(dto);
+        } catch (error) {
+            return error;
+        }
+    }
+
+    async collectChannel(user: JwtPayload) {
+        try { 
+            const query = await this.messageRepository.findAndCount({ where: { sender: user.id } })
+            return query
         } catch (error) {
             return error;
         }

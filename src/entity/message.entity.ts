@@ -11,4 +11,7 @@ export class Message extends Base {
 
     @Column()
     event!: string;
+
+    @Column()
+    sender!: string;
 }
