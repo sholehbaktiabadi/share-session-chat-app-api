@@ -31,4 +31,13 @@ export class MessageService {
             return error(ctx, errMsg().ise, 500);
         }
     }
+
+    async getAllMessageByChannel(ctx: Context, event: string) {
+        try {
+            const data = await this.messageRepository.getAllMessageByChannel(event)
+            return success(ctx, data);
+        } catch (err) {
+            return error(ctx, errMsg().ise, 500);
+        }
+    }
 }

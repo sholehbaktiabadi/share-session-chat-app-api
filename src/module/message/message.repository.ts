@@ -26,4 +26,13 @@ export class MessageRepository {
             return error;
         }
     }
+
+    async getAllMessageByChannel(channel: string) {
+        try { 
+            const query = await this.messageRepository.find({ event: { $eq: channel } })
+            return query
+        } catch (error) {
+            return error;
+        }
+    }
 }

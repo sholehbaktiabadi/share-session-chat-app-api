@@ -16,4 +16,8 @@ messageRouter.post("/", (ctx) => {
     const dto = ctx.request.body;
     return messageService.create(ctx, dto);
 });
+messageRouter.get("/channel", (ctx) => {
+    const event = ctx.request.query.event as string
+    return messageService.getAllMessageByChannel(ctx, event);
+});
 export default messageRouter;
