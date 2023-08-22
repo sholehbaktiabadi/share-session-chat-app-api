@@ -10,6 +10,7 @@ import authRouter from "./module/auth/auth.controller";
 import { middleware, unauthorizeHandler } from "./middleware/middleware";
 import { socketFuntion, socketServer } from "./config/socket.io";
 import userEventRouter from "./module/user-event/user-event.controller";
+import cors from '@koa/cors'
 
 connectMysql();
 connectMongod();
@@ -20,6 +21,7 @@ socketFuntion.on("connection", (socket) => {
 });
 
 const app = new Koa();
+app.use(cors())
 app.use(koaBody());
 app.use(unauthorizeHandler);
 app.use(middleware);
