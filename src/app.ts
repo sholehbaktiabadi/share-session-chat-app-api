@@ -28,6 +28,6 @@ app.use(userEventRouter.routes());
 app.use(userRouter.routes());
 app.use(authRouter.routes());
 app.use(async (ctx: Context) => (ctx.body = "Hai there"));
-app.listen("5000", () =>
+app.listen(Variables.APP_PORT, () =>
     signale.complete(`App running on port ${Variables.APP_PORT}`)
 );
