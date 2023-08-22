@@ -20,7 +20,7 @@ export class MessageRepository {
 
     async collectChannel(user: JwtPayload) {
         try { 
-            const query = await this.messageRepository.findAndCount({ where: { sender: user.id } })
+            const query = this.messageRepository.distinct('event', { sender: { $eq: user.id }})
             return query
         } catch (error) {
             return error;
