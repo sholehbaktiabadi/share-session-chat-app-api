@@ -45,4 +45,15 @@ export class AuthService {
             return error(ctx, errMsg().ise, 500);
         }
     }
+
+    verify(ctx: Context) {
+        try {
+            const [_, token] = ctx.headers.authorization.split(' ')
+            if(!token) return error(ctx, errMsg("token").nf, 400);
+            jsonwebtoken.verify(token, Variables.JWT_SECRET)
+            return ctx.body = true
+        } catch (error) {
+            return ctx.body = false
+        }
+    }
 }

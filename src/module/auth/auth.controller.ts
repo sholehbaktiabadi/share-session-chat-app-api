@@ -20,6 +20,9 @@ authRouter.post("/register", async (ctx) => {
     const dto = ctx.request.body;
     return await authService.register(ctx, dto);
 });
+authRouter.post("/verify", (ctx) => {
+    return authService.verify(ctx);
+});
 authRouter.post("/logout", async (ctx) => {
     const user = extractUserToken(ctx);
     serverRedis.del([userTokenKey(user.id)]);
